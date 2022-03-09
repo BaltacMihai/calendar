@@ -5,12 +5,15 @@ function Calendar() {
     { name: "Meeting With the board", color: "#72A1E5", date: "14" },
     { name: "PoC To Be Done", color: "#72A1E5", date: "11" },
     { name: "Create something", color: "#72A1E5", date: "21" },
-    { name: "Create something", color: "#FFC400", date: "21" },
+    { name: "Create New", color: "#FFC400", date: "21" },
+    { name: "Solution New", color: "#FFC400", date: "21" },
+    { name: "Solution New", color: "#FFC400", date: "29" },
   ];
 
   useEffect(() => {
     console.log(events);
 
+    events.sort(compareDates);
     let currentDate = new Date();
     let date = document.getElementById("day-" + currentDate.getDate());
     date.classList.add("calendar_body_item-today");
@@ -18,16 +21,23 @@ function Calendar() {
     events.forEach((e) => {
       let addEvent = document.getElementById("day-" + e.date);
 
-      //#TODO: If I get more than one event on one day to modify it
+      addEvent.classList.replace(
+        "calendar_body_item-event",
+        "calendar_body_item-event-more"
+      );
 
-      //#TODO: Also, what to do when i have more than one event
       addEvent.classList.add("calendar_body_item-event");
       addEvent.style.backgroundColor = e.color;
-      addEvent.title = e.name;
+
+      addEvent.title = addEvent.title + " - " + e.name;
     });
   });
 
   return returnCalendarLayout();
+}
+
+function compareDates(a, b) {
+  return a.date - b.date;
 }
 
 function returnCalendarLayout() {

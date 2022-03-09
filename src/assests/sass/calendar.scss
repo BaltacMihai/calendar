@@ -28,7 +28,7 @@ $br: 15px;
     justify-content: space-between;
 
     &_item {
-      flex: 0 0 $size;
+      flex: 0 0 $size - 1;
       margin: 10px 0;
       text-align: center;
 
@@ -43,6 +43,25 @@ $br: 15px;
 
       &-event {
         text-decoration: none;
+        border-radius: 12.5px;
+
+        &-more {
+          background-color: transparent !important;
+          border: 0.05px solid #08243a;
+
+          &::after {
+            content: "?";
+
+            position: relative;
+            left: 15px;
+            top: -5px;
+
+            background-color: #72a1e5;
+            padding: 2px 5px;
+
+            border-radius: 100%;
+          }
+        }
       }
     }
   }
