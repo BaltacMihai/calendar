@@ -19,10 +19,11 @@ function Calendar() {
       let addEvent = document.getElementById("day-" + e.date);
 
       //#TODO: If I get more than one event on one day to modify it
-      //#TODO: If I hover on the day, i want to see the name of that event
+
       //#TODO: Also, what to do when i have more than one event
       addEvent.classList.add("calendar_body_item-event");
       addEvent.style.backgroundColor = e.color;
+      addEvent.title = e.name;
     });
   });
 
@@ -69,9 +70,9 @@ function generateCurrentCalendarDates(noOfDays) {
   return [...Array(noOfDays)].map((e, i) => {
     if (i > 0) {
       return (
-        <div className="calendar_body_item" id={"day-" + i} key={"day-" + i}>
+        <abbr className="calendar_body_item" id={"day-" + i} key={"day-" + i}>
           {i}
-        </div>
+        </abbr>
       );
     }
   });
